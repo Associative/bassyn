@@ -5,7 +5,7 @@
 //
 //  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //
-//  apf.c - 22 dec 2008, S. v. Elderen
+//  apf.c
 //
 
 #include <math.h>
@@ -20,17 +20,17 @@ unsigned long long samplecount;
 
 // module parameter strings
 const char *valueStrings[]        = {NULL}; 
-const char *sumStrings[]          = {"Input A", "Input B", NULL};
-const char *gainStrings[]         = {"Input", "Gain Factor", NULL};
-const char *gSineStrings[]        = {"Frequency", "Phaseshift", "Amplitude", NULL};
-const char *gTriangleStrings[]    = {"Frequency", "Phaseshift", "Amplitude", "Skew ratio", NULL};
-const char *gSquareStrings[]      = {"Frequency", "Phaseshift", "Duty cycle", NULL};
-const char *f2HighPassStrings[]   = {"Input", "Bypass", "Cutoff frequency", NULL};
-const char *f2LowPassStrings[]    = {"Input", "Bypass", "Cutoff frequency", NULL};
-const char *f2BandPassStrings[]   = {"Input", "Bypass", "Center frequency", "Q-factor", NULL};
-const char *f2HighShelveStrings[] = {"Input", "Bypass", "Corner frequency", "Boost factor", NULL};
-const char *f2LowShelveStrings[]  = {"Input", "Bypass", "Corner frequency", "Boost factor", NULL};
-const char *f2PeakStrings[]       = {"Input", "Bypass", "Center frequency", "Q-factor", NULL};
+const char *sumStrings[]          = {"Input A", "Input B"};
+const char *gainStrings[]         = {"Input", "Gain Factor"};
+const char *gSineStrings[]        = {"Frequency", "Phaseshift", "Amplitude"};
+const char *gTriangleStrings[]    = {"Frequency", "Phaseshift", "Amplitude", "Skew ratio"};
+const char *gSquareStrings[]      = {"Frequency", "Phaseshift", "Duty cycle"};
+const char *f2HighPassStrings[]   = {"Input", "Bypass", "Cutoff frequency"};
+const char *f2LowPassStrings[]    = {"Input", "Bypass", "Cutoff frequency"};
+const char *f2BandPassStrings[]   = {"Input", "Bypass", "Center frequency", "Q-factor"};
+const char *f2HighShelveStrings[] = {"Input", "Bypass", "Corner frequency", "Boost factor"};
+const char *f2LowShelveStrings[]  = {"Input", "Bypass", "Corner frequency", "Boost factor"};
+const char *f2PeakStrings[]       = {"Input", "Bypass", "Center frequency", "Q-factor"};
 
 // module descriptors
 const struct moduleDesc moduleInfo[] = {
