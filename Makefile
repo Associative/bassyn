@@ -4,7 +4,7 @@
 CC = gcc
 CFLAGS = -O2 -std=c99 -pedantic -Wall `sdl-config --cflags`
 LDFLAGS = -lm
-OBJ = main.o apf.o apf-graph.o
+OBJ = main.o apf.o 
 DEMO = bassyn
 TEST = 
 PLATFORM = osx
