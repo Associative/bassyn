@@ -7,7 +7,6 @@ LDFLAGS = -lm
 OBJ = main.o apf.o 
 DEMO = bassyn
 TEST = 
-PLATFORM = osx
 
 # We assume a fink + sdl + xcode utilities setup on OS X
 # Also note that we do a static link to SDL
