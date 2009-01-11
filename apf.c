@@ -229,6 +229,7 @@ void f2HighPassProcess(struct module *m) {
 }
 
 void f2LowPassProcess(struct module *m) {
+  double K;
   m->value = 0;
 }
 

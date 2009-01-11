@@ -12,7 +12,12 @@
 #include <stdlib.h>
 #include <math.h>
 
-#include "glut.h"
+#ifdef __APPLE__
+  #include "glut.h"
+#else
+  #include "GL/glut.h"
+#endif
+
 #include "SDL.h"
 #include "SDL_audio.h"
 #include "apf.h"
