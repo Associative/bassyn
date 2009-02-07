@@ -71,12 +71,10 @@ int main(int argc, char *argv[])
 
   if (SDL_OpenAudio(desired, obtained) < 0) {
     fprintf(stderr, "Couldn't open audio: %s\n", SDL_GetError());
-    exit(-1);
+    exit(1);
   }
 
-  for (int i=0; i<1000; i++) {
-    wave[i] = 0;
-  }
+  memset(wave, 0, 2048*sizeof(double));
 
 ////////////////////////////
   synthRoot = createModule(MT_Value, 1e3f, NULL);
