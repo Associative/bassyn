@@ -12,6 +12,8 @@
 #include <math.h>
 #include "SDL.h"
 
+struct module;
+
 // synthesizer module types
 enum moduleTypes {
   // basic functions
@@ -34,20 +36,16 @@ enum moduleTypes {
   MODULE_TYPE_COUNT
 };
 
-// basic module representation
-struct module {
-  int    type;            // module type
-  int    level;           // level in processing hierarchy (determines calculation order of the modules)
-  double value;           // output value
-  struct module **param;  // array of pointers to parameter values (addresses of other modules)
-  void   *data;           // module dependent data
-  struct module *link;    // link in a linked list for sequential processing
+// Value module
+enum MP_Value {
+  MP_Value_COUNT=0
 };
 
-// second order filter memory structure
-struct filterMemory2 {
-  double x[3];
-  double y[3];
+// Sum module
+enum MP_Sum {
+  MP_Sum_InputA=0,
+  MP_Sum_InputB,
+  MP_Sum_COUNT
 };
 
 // module description structure
@@ -57,6 +55,22 @@ struct moduleDesc {
   const char **paramStrings;
   const int  dataSize;
   void (*process)(struct module*);
+};
+
+// basic module representation
+struct module {
+  struct moduleDesc *info; // module type
+  int    level;            // level in processing hierarchy (determines calculation order of the modules)
+  double value;            // output value
+  struct module **param;   // array of pointers to parameter values (addresses of other modules)
+  void   *data;            // module dependent data
+  struct module *link;     // link in a linked list for sequential processing
+};
+
+// second order filter memory structure
+struct filterMemory2 {
+  double x[3];
+  double y[3];
 };
 
 // global variables
@@ -69,7 +83,6 @@ double processModules(struct module *ml);
 struct module* sortModules(struct module *ml);
 struct module* createModule(int t, double v, struct module *l);
 struct module* freeModule(struct module *m);
-const char* getModuleName(struct module *m);
 
 double clipEx(double x, double max);
 double clipIn(double x, double max);
@@ -114,18 +127,6 @@ void f2PeakProcess(struct module *m);
 
 
 /*
-// Value module
-enum MP_Value {
-  MP_Value_COUNT=0
-};
-
-// Sum module
-enum MP_Sum {
-  MP_Sum_InputA=0,
-  MP_Sum_InputB,
-  MP_Sum_COUNT
-};
-
 // Gain module
 enum MP_Gain {
   MP_Gain_Input=0,

@@ -100,7 +100,7 @@ int main(int argc, char *argv[])
 
   tp = synthRoot;
   while (tp != NULL) {
-    printf("%2d %s value: %f\n", tp->level, getModuleName(tp), tp->value);
+    printf("%2d %s value: %f\n", tp->level, tp->info->name, tp->value);
     tp = tp->link;
   }  
   //printf("result: %f\n", processModules(synthRoot));

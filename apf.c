@@ -117,7 +117,7 @@ int calcLevel(struct module *m) {
   struct module *n;
   int l=0;
 
-  for (int i=0; i<moduleInfo[m->type].paramCount; i++) {
+  for (int i=0; i<m->info->paramCount; i++) {
     n = m->param[i];
     if ((n != NULL) && (n->level+1 > l)) l = n->level+1;
   }
@@ -153,10 +153,10 @@ double processModules(struct module *ml) {
   struct module *m = ml;
 
   while (m->link != NULL) {
-    moduleInfo[m->type].process(m);
+    m->info->process(m);
     m = m->link;
   }
-  moduleInfo[m->type].process(m);
+  m->info->process(m);
 
   return m->value;
 }
@@ -166,7 +166,7 @@ struct module* createModule(int t, double v, struct module *l) {
   struct module *m;
 
   m = (struct module *) malloc(sizeof(struct module));
-  m->type = t;
+  m->info = &moduleInfo[t];
   m->level = 0;
   m->value = v;
   m->param = (struct module **) malloc(moduleInfo[t].paramCount * sizeof(struct module *));
@@ -185,11 +185,6 @@ struct module* freeModule(struct module *m) {
   free(m);
 
   return l;
-}
-
-// get the name of a module
-const char* getModuleName(struct module *m) {
-  return moduleInfo[m->type].name;
 }
 
 
