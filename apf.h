@@ -94,7 +94,7 @@ double getPeriodSample(double f, double ph);
 //  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 // module type descriptions
-extern const struct moduleDesc moduleInfo[];
+extern struct moduleDesc moduleInfo[];
 
 // module parameter strings
 extern const char *valueStrings[];

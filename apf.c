@@ -33,7 +33,7 @@ const char *f2LowShelveStrings[]  = {"Input", "Bypass", "Corner frequency", "Boo
 const char *f2PeakStrings[]       = {"Input", "Bypass", "Center frequency", "Q-factor"};
 
 // module descriptors
-const struct moduleDesc moduleInfo[] = {
+struct moduleDesc moduleInfo[] = {
 
   // MT_Value
   { "Constant",
